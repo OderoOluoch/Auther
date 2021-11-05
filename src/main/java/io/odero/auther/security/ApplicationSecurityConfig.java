@@ -13,8 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
-import static io.odero.auther.security.ApplicationUserRole.ADMIN;
-import static io.odero.auther.security.ApplicationUserRole.STUDENT;
+import static io.odero.auther.security.ApplicationUserRole.*;
 
 @Configuration
 @EnableWebSecurity
@@ -56,8 +55,14 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .roles(ADMIN.name())
                 .build();
 
+        UserDetails tom = User.builder()
+                .username("tom")
+                .password(passwordEncoder.encode("password"))
+                .roles(ADMINTRAINEE.name())
+                .build();
+
         return new InMemoryUserDetailsManager(
-                oderoOluoch,linda
+                oderoOluoch,linda, tom
         );
     }
 }
