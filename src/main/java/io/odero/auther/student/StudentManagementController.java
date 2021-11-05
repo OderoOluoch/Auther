@@ -23,16 +23,19 @@ public class StudentManagementController {
 
     @PostMapping
     public void registerNewStudent(@RequestBody Student student){
+        System.out.println("Register");
         System.out.println(student);
     }
 
     @DeleteMapping(path = "{studentId}")
     public void deleteStudent(@PathVariable("studentId") Integer studentId){
+        System.out.println("Delete");
         System.out.println(studentId);
     }
 
     @PutMapping(path = "{studentId}")
     public void updateStudent(@PathVariable("studentId") Integer studentId, Student student){
+        System.out.println("Update");
         System.out.println(String.format("%s %s", studentId, student));
     }
 
