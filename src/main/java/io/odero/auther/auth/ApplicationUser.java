@@ -12,6 +12,7 @@ public class ApplicationUser implements UserDetails {
     private final Set<? extends GrantedAuthority> grantedAuthorities;
     private final boolean isAccountNonExpired;
     private final boolean isCredentialsNonExpired;
+    private final boolean isAccountNonLocked;
     private final boolean isEnabled;
 
     public ApplicationUser(
@@ -20,12 +21,13 @@ public class ApplicationUser implements UserDetails {
             Set<? extends GrantedAuthority> grantedAuthorities,
             boolean isAccountNonExpired,
             boolean isCredentialsNonExpired,
-            boolean isEnabled) {
+            boolean isAccountNonLocked, boolean isEnabled) {
         this.password = password;
         this.username = username;
         this.grantedAuthorities = grantedAuthorities;
         this.isAccountNonExpired = isAccountNonExpired;
         this.isCredentialsNonExpired = isCredentialsNonExpired;
+        this.isAccountNonLocked = isAccountNonLocked;
         this.isEnabled = isEnabled;
     }
 
@@ -51,7 +53,7 @@ public class ApplicationUser implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return isAccountNonLocked();
+        return isAccountNonLocked;
     }
 
     @Override
