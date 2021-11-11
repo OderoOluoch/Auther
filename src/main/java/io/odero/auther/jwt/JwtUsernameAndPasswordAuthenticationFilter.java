@@ -14,7 +14,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -43,7 +42,7 @@ public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePassword
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
-        String key = "Herewearetosaysomethinglongsothatheencrytionkeycomesupandgetsaverylonglnglonglongtexttoencrypt"
+        String key = "Herewearetosaysomethinglongsothatheencrytionkeycomesupandgetsaverylonglnglonglongtexttoencrypt";
         String token =  Jwts.builder()
                 .setSubject(authResult.getName())
                         .claim("authorities", authResult.getAuthorities())
