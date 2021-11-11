@@ -22,7 +22,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class JwtTokenVerification extends OncePerRequestFilter {
+public class JwtTokenVerifier extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(
             HttpServletRequest request,
@@ -60,6 +60,6 @@ public class JwtTokenVerification extends OncePerRequestFilter {
                     String.format("Token %s cannot be trusted", token)
             );
         }
-
+        filterChain.doFilter(request,response);
     }
 }
